@@ -4,5 +4,5 @@ class controller(object):
         target = self.__class__.__name__.lower()
         tmpl_module = getattr(__import__("views.%s" % target), target)
         tmpl = getattr(tmpl_module, target)()
-        [setattr(tmpl, k, v) for k,v in kwargs]
+        [setattr(tmpl, k, v) for k,v in kwargs.items()]
         return str(tmpl)
