@@ -3,6 +3,13 @@
     <title>Hey buddy</title>
   </head>
   <body>
+    #if $who
     "Hello World", says $who
+    #else
+    <form action="/hello">
+      What's your name? <input name="who" type="text"/>
+      <input type="submit" value="Onwards"/>
+    </form>
+    #end if
   </body>
 </html>
