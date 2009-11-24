@@ -1,0 +1,21 @@
+<h1>Welcome to PyChee</h1>
+
+PyChee is a lightweight Apache/Python framework that was written over the course of a sporadic weekend. Its aim is to be a lightweight python deployment for exporatory development, designed to host a number of projects on disparate subdomains.
+
+<h2>Installation</h2>
+
+<p>PyChee is hosted on github. Get it at <a href="http://github.com/philippp/PyChee">http://github.com/philippp/PyChee</a>!</p>
+
+Prerequisites:
+<ul>
+  <li>Apache 2</li>
+  <li>mod_python</li>
+  <li>Python 2.6+</li>
+  <li>Cheetah</li>
+</ul>
+
+<h2>History</h2>
+<h3>0.1 (Weekend one, 11/22/09)</h3>
+Currently PyChee forces each controller to reference a single template, with a routing of /foo calling the index() method of controllers/foo.py and rendering views/foo.tmpl.
+A simple "Hello world" is implemented through controllers/hello.py and views/hello.tmpl, stop by <a href="http://pychee.notphil.com/hello?who=pychee">http://pychee.notphil.com/hello/?who=pychee</a> and check it out.
+Immediate goals include routing for methods, so that a routing of /foo/bar will call the bar() method of controllers/foo.py and attempt to render views/foo/bar.tmpl
