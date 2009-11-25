@@ -4,7 +4,7 @@ AddHandler mod_python .py
 PythonHandler lib.page_handler
 PythonDebug On
 PythonPath "sys.path+['/home/philippp/pychee']"
-
+SetEnvIfNoCase PYCHEE_END_URI .+ PYCHEE_END_URI=""
 DirectoryIndex /static/index.html
 
 RewriteEngine On
@@ -20,7 +20,8 @@ RewriteBase /
 # the last part of the path, redirect to that.
 # Ex: /a/b/something/ --> a/b/something.py
 RewriteCond %{DOCUMENT_ROOT}controllers/$1.py -f
-RewriteRule ^([^/]+)(?=.+?) %{DOCUMENT_ROOT}controllers/$1.py [L]
+RewriteRule ^([^/]+)(.+)?$ %{DOCUMENT_ROOT}controllers/$1.py [E=PYCHEE_END_URI:$2,L]
+RequestHeader append PYCHEE_END_URI "%{PYCHEE_END_URI}e" env=PYCHEE_END_URI
 
 RewriteCond %{DOCUMENT_ROOT}static/$1 -f
 RewriteRule ^(.+[^/]) %{DOCUMENT_ROOT}static/$1 [L]
