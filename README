@@ -3,5 +3,7 @@ PyChee is a lightweight Apache/Python framework that was written over the course
 Prerequisites:
   + Apache 2
   + mod_python
+  + mod_rewrite
+  + mod_headers
   + Python 2.6+
   + Cheetah
