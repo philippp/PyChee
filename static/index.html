@@ -14,8 +14,13 @@ Prerequisites:
   <li>Cheetah</li>
 </ul>
 
+Modify the PythonPath cited in .htaccess to your project root, and you should be good to go.
+
 <h2>History</h2>
 <h3>0.1 (Weekend one, 11/22/09)</h3>
 Currently PyChee forces each controller to reference a single template, with a routing of /foo calling the index() method of controllers/foo.py and rendering views/foo.tmpl.
 A simple "Hello world" is implemented through controllers/hello.py and views/hello.tmpl, stop by <a href="http://pychee.notphil.com/hello?who=pychee">http://pychee.notphil.com/hello/?who=pychee</a> and check it out.
 Immediate goals include routing for methods, so that a routing of /foo/bar will call the bar() method of controllers/foo.py and attempt to render views/foo/bar.tmpl
+
+<h3>0.2 (Weekend two, 11/28/09)</h3>
+It's thanksgiving weekend, so I don't expect to get too much work done on this. We are now resolving routes past the controller name to the method (ex: /foo/bar calls the bar() method of controllers/foo.py). This behavior can be modified by overriding the dispatch() function in controllers/__init__.py.
