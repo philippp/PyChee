@@ -1,11 +1,8 @@
-import controllers
+from controllers import controller
 import flickr
 
-class hello(controllers.controller):
+class hello(controller.Controller):
   ''' The hello controller greets the user '''
 
   def index(self, who=''):
-    return self.render(who=who)
-
-  def goodbye(self,when=''):
-    return "kthxbye"
+    return self.render(view="hello.index", who=who)
