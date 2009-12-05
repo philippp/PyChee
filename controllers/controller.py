@@ -1,7 +1,11 @@
 import json
+from lib import diskio
 
 class Controller(object):
     
+    #Usage: disk.write, disk.read, disk.list
+    disk = diskio
+
     def render(self, **kwargs):
         target = kwargs.get('view',None)
         if target:
@@ -22,10 +26,10 @@ class Controller(object):
         return str(tmpl)
 
     def success(self, response=True):
-        return json.dumps({'c':0, response}}
+        return json.dumps({'c':0, 'data':response})
 
     def failure(self, response=False, code=1):
-        return json.dumps({'c':code, response})
+        return json.dumps({'c':code, 'data':response})
 
     @classmethod
     def dispatch(cls, req, uri, **kwargs):
