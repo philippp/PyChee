@@ -1,3 +1,5 @@
+import json
+
 class Controller(object):
     
     def render(self, **kwargs):
@@ -18,7 +20,13 @@ class Controller(object):
         tmpl = getattr(mod, components[-1])()
         [setattr(tmpl, k, v) for k,v in kwargs.items()]
         return str(tmpl)
-    
+
+    def success(self, response=True):
+        return json.dumps({'c':0, response}}
+
+    def failure(self, response=False, code=1):
+        return json.dumps({'c':code, response})
+
     @classmethod
     def dispatch(cls, req, uri, **kwargs):
         ''' Routing dispatcher, triggers any and all controller activity.
