@@ -6,5 +6,5 @@ class hello(controller.Controller):
   def index(self, author='', message=''):
     if author and message:
       self.disk.write({'author':author, 'message':message},category='comment')  
-    comment_data = self.disk.list(category='comment').values()
+    comment_data = [data for id, data in self.disk.list(category='comment')]
     return self.render("hello.index", comment_data=comment_data)

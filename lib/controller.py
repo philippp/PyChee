@@ -14,12 +14,12 @@ class Controller(object):
         super(Controller, self).__init__(*args, **kwargs)
 
     def render(self, view, **kwargs):
-        ''' 
+        """
         Render the template specified by view as a string. Template variables
         are specified as kwargs.
         view is the package name of the template: hello.index for views/hello/index.py
-        '''
-        
+        """
+
         # We parse out periods to support nested modules within templates.
         target = "views.%s" % view
         components = target.split('.')
@@ -33,19 +33,21 @@ class Controller(object):
         return str(tmpl)
 
     def success(self, response=True):
+        """JSON-format success response"""
         return json.dumps({'c':0, 'data':response})
 
     def failure(self, response=False, code=1):
+        """JSON-format failure response"""
         return json.dumps({'c':code, 'data':response})
 
     @classmethod
     def dispatch(cls, req, uri, **kwargs):
-        ''' 
+        """
         Routing dispatcher, triggers any and all controller activity.
         Override this method to change the path-to-method resolution or 
         to manipulate arguments. 
         The default resolves /foo/bar to method "bar" on controller "foo"
-        '''
+        """
         controller_obj = cls()
         uri_parts = uri.split("/")
         if uri_parts and len(uri_parts) > 1 and getattr(controller_obj, uri_parts[1],None):
