@@ -1,20 +1,27 @@
+import config
 import json
-from lib import diskio
+
+from lib import diskio, memcache
 
 class Controller(object):
     
     #Usage: disk.write, disk.read, disk.list
     disk = diskio
 
-    def render(self, **kwargs):
-        target = kwargs.get('view',None)
-        if target:
-            del kwargs['view']
-        else:
-            target = self.__class__.__name__.lower()
+    def __init__(self, *args, **kwargs):
+        self.mem = memcache.Client([config.memcache_host])
+        self.disk = diskio
+        super(Controller, self).__init__(*args, **kwargs)
+
+    def render(self, view, **kwargs):
+        ''' 
+        Render the template specified by view as a string. Template variables
+        are specified as kwargs.
+        view is the package name of the template: hello.index for views/hello/index.py
+        '''
         
         # We parse out periods to support nested modules within templates.
-        target = "views.%s" % target
+        target = "views.%s" % view
         components = target.split('.')
         mod = __import__(target)
         for comp in components[1:]:
@@ -33,8 +40,11 @@ class Controller(object):
 
     @classmethod
     def dispatch(cls, req, uri, **kwargs):
-        ''' Routing dispatcher, triggers any and all controller activity.
-        /foo/bar will invoke method bar on controller foo.
+        ''' 
+        Routing dispatcher, triggers any and all controller activity.
+        Override this method to change the path-to-method resolution or 
+        to manipulate arguments. 
+        The default resolves /foo/bar to method "bar" on controller "foo"
         '''
         controller_obj = cls()
         uri_parts = uri.split("/")

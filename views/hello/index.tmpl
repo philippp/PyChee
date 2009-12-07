@@ -1,15 +1,36 @@
 <html>
   <head>
-    <title>Hey buddy</title>
+    <title>Hey buddy!</title>
+    <style type="text/css">
+      .message { 
+      color: #333333;
+      background-color: #EEEEEE;
+      padding: 5px 5px 5px 5px;
+      border: 1px solid #333333;
+      margin-bottom: 5px;
+      }
+      .author {
+      font-weight: bolder;
+      margin: 0 5px 5px 0;
+      display: inline-block;
+      }
+    </style>
   </head>
   <body>
-    #if $who
-    "Hello World", says $who
-    #else
+
+    #for $comment in $comment_data
+    <div class="message">
+      <span class="author">
+	$comment['author']
+      </span>
+      $comment['message']
+    </div>
+    #end for
+
     <form action="/hello">
-      What's your name? <input name="who" type="text"/>
+      What's your name?<input name="author" type="text"/><br/>
+      What do you have to say? <textarea name="message"></textarea>
       <input type="submit" value="Onwards"/>
     </form>
-    #end if
   </body>
 </html>

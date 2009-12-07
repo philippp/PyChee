@@ -5,3 +5,6 @@ Prerequisites:
   + mod_python
   + Python 2.6+
   + Cheetah
+
+Nice to have:
+  * python-memcached (for controller.mem)
