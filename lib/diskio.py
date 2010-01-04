@@ -11,7 +11,7 @@ from lib import logger
 
 def write(data, category='0'):
     # need semaphore, get it / TODO
-    cdir = '%s/%s' % (config.data_dir, category)
+    cdir = '%s/%s' % (config.diskio_dir, category)
     if not os.access(cdir,os.R_OK): #Todo: Check to existence vs. perms
         os.mkdir(cdir)
     id = len(os.listdir(cdir)) + 1    
@@ -22,7 +22,7 @@ def write(data, category='0'):
     return id
 
 def read(id, category='0'):
-    f = open('%s/%s/%s' % (config.data_dir, category, id), 'r')
+    f = open('%s/%s/%s' % (config.diskio_dir, category, id), 'r')
     return cPickle.load(f)
 
 def list(category='0'):
