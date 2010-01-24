@@ -1,9 +1,11 @@
 import sys
 import controllers
 import mod_python.util
+import rpdb2
 from mod_python import apache
 
 def handler(req):
+    params = {}
     req.content_type = "text/html"
     route_str = req.headers_in.get("PYCHEE_END_URI","")
     if route_str:
@@ -16,8 +18,14 @@ def handler(req):
     target_module = getattr(__import__(target_module),target)
     target_cls = getattr(target_module, target)
 
-    # GET/POST params
-    params =  dict([(fielditem.name, fielditem.value) for fielditem in form.list])
+    for fielditem in form.list:
+        fieldname = fielditem.name
+        fieldvalue = fielditem.value
+        if getattr(fielditem, 'filename', None):
+            fieldvalue = (fielditem.value,
+                          fielditem.filename,
+                          fielditem.type)
+        params[fieldname] = fieldvalue
 
     # Unless you override dispatch in your controller, we hit index for / or the /method
     req.write( target_cls.dispatch(req, route_str, **params) or '' )
