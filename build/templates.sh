@@ -1,1 +1,2 @@
-cd views/hello &> /dev/null && cheetah -c *.tmpl && cd - &> /dev/null
+cd views &> /dev/null && cheetah -c -R && cd - &> /dev/null
+cd app &> /dev/null && cheetah -c -R && cd - &> /dev/null

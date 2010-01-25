@@ -22,6 +22,10 @@ class Controller(object):
 
         # We parse out periods to support nested modules within templates.
         target = "views.%s" % view
+        if 'app' in kwargs:
+            target = "app.%s.%s" % (kwargs['app'], target)
+            del kwargs['app']
+
         components = target.split('.')
         mod = __import__(target)
         for comp in components[1:]:
@@ -48,6 +52,7 @@ class Controller(object):
         to manipulate arguments. 
         The default resolves /foo/bar to method "bar" on controller "foo"
         """
+
         controller_obj = cls()
         uri_parts = uri.split("/")
         if uri_parts and len(uri_parts) > 1 and getattr(controller_obj, uri_parts[1],None):

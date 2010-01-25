@@ -1,7 +1,7 @@
 allow from all
 Options -Indexes
 AddHandler mod_python .py
-PythonHandler lib.page_handler
+PythonHandler lib.handler_apache
 PythonDebug On
 PythonPath "sys.path+['/home/philippp/pychee']"
 #SetEnvIfNoCase PYCHEE_END_URI .+ PYCHEE_END_URI=""
