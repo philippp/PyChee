@@ -7,6 +7,7 @@ import logging
 import logging.handlers
 import feather
 import config
+import lib.fails
 
 DEFAULT_HOST = ''
 DEFAULT_PORT = 9000
@@ -22,8 +23,20 @@ def handler(environ, start_response):
     app_name = host_parts and host_parts[-1] or None
 
     cname = url_parts and url_parts[0] or ''
-    mname = len(url_parts) > 1 and url_parts[1] or environ['REQUEST_METHOD'].lower()
-    
+    try:
+        response = eval_controller(environ, start_response, cname, params, app_name=app_name)
+        if not response:
+            response = eval_static(url_parts, app_name=app_name)
+        
+        start_response('200 OK', [('content-type', 'text/html'),
+                                  ('content_length', str(len(response)))])
+        return [response]
+    except Exception, e:
+        start_response('200 OK', [('content-type', 'text/html'),
+                                  ('content_length', str(len(str(e))))])    
+        return [str(e)]
+
+def eval_controller(environ, start_response, cname, params, app_name=''):
     if app_name:
         _modname = 'app.%s.controllers.%s' % (app_name, cname)
     else:
@@ -40,17 +53,19 @@ def handler(environ, start_response):
                           locals=locals())
         target_cls = getattr(cmod, cname, None)
         if not target_cls:
-            return feather_404(start_response, 'controller not found')
+            return False
     except ImportError, e:
-        return feather_404(start_response, 'controller not found')
+        return False
         
-    try:
-        response = target_cls.dispatch(environ, environ['PATH_INFO'], **params)
-        start_response('200 OK', [('content-type', 'text/html'),
-                                  ('content_length', str(len(response)))])
-    except Exception, e:
-        return str(e)
-    return [response]
+    response = target_cls.dispatch(environ, environ['PATH_INFO'], **params)
+    return response
+
+def eval_static(url_parts, app_name=app_name):
+    '''
+    open the file, return the contents
+    '''
+    return 'file goes here'
+
 
 def feather_404(start_response, msg='not hurr'):
         start_response('404 NOT FOUND', [('content-type','text/html'),
