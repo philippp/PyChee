@@ -17,6 +17,10 @@ def handler(environ, start_response):
 
     params = dict(cgi.parse_qsl(environ['wsgi.input'].read()))
     
+    if 'QUERY_STRING' in environ:
+        get_params = dict([ p.split("=") for p in environ['QUERY_STRING'].split('&') ])
+        params.update( get_params )
+
     url_parts = environ['PATH_INFO'].split('/')[1:]
     host_parts = environ['HTTP_Host'].split(':')[0].split('.')
     host_parts = host_parts[:-2] # TLD is known
@@ -24,15 +28,17 @@ def handler(environ, start_response):
 
     cname = url_parts and url_parts[0] or ''
     try:
-        response = eval_controller(environ, start_response, cname, params, app_name=app_name)
+        mime, response = eval_controller(environ, start_response, cname, params, app_name=app_name)
         if not response:
-            response = eval_static(url_parts, app_name=app_name)
-        
-        start_response('200 OK', [('content-type', 'text/html'),
+            mime, response = eval_static(url_parts, app_name=app_name)
+            if not response:
+                return feather_404(start_response, msg='file not found')
+
+        start_response('200 OK', [('content-type', mime),
                                   ('content_length', str(len(response)))])
         return [response]
     except Exception, e:
-        start_response('200 OK', [('content-type', 'text/html'),
+        start_response('200 OK', [('content-type', mime),
                                   ('content_length', str(len(str(e))))])    
         return [str(e)]
 
@@ -53,19 +59,38 @@ def eval_controller(environ, start_response, cname, params, app_name=''):
                           locals=locals())
         target_cls = getattr(cmod, cname, None)
         if not target_cls:
-            return False
+            return None, None
     except ImportError, e:
-        return False
+        return None, None
         
     response = target_cls.dispatch(environ, environ['PATH_INFO'], **params)
-    return response
+    return 'text/html', response
 
-def eval_static(url_parts, app_name=app_name):
+def eval_static(url_parts, app_name=None):
     '''
     open the file, return the contents
     '''
-    return 'file goes here'
 
+    fext = url_parts[-1].split(".")[-1]
+
+    fpath_s =  '%s/static/' + "/".join(url_parts)
+
+    if app_name:
+        try:
+            fc = file(fpath_s % config.app_dir_for(app_name)).read()
+            return FILE_MIMETYPE[fext], fc
+        except IOError, e:
+            pass
+    try:
+        fc = file(fpath_s % config.root_dir).read()
+        return FILE_MIMETYPE[fext], fc
+    except IOError, e:
+        return None, None
+
+FILE_MIMETYPE = {
+    'js' : 'text/javascript',
+    'css' : 'text/css'
+    }
 
 def feather_404(start_response, msg='not hurr'):
         start_response('404 NOT FOUND', [('content-type','text/html'),
