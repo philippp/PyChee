@@ -43,21 +43,19 @@ def handler(environ, start_response):
         return [str(e)]
 
 def eval_controller(environ, start_response, cname, params, app_name=''):
+
+    cname = cname or '_root'
     if app_name:
         _modname = 'app.%s.controllers.%s' % (app_name, cname)
     else:
         _modname = 'controllers.%s' % (cname)
 
-    if not cname:
-        _modname = _modname[:-1]
-        cname = 'controllers'
-
     try:
-        cmod = __import__(_modname,
-                          fromlist = [cname],
-                          globals=globals(),
-                          locals=locals())
-        target_cls = getattr(cmod, cname, None)
+        cmodule = __import__(_modname,
+                             fromlist = [cname],
+                             globals=globals(),
+                             locals=locals())
+        target_cls = getattr(cmodule, cname, None)
         if not target_cls:
             return None, None
     except ImportError, e:
