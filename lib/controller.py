@@ -33,6 +33,7 @@ class Controller(object):
 
         # Cheetah guarantees that the template class is named the same as the template module.
         tmpl = getattr(mod, components[-1])()
+        kwargs['_cname'] = self.__class__.__name__
         [setattr(tmpl, k, v) for k,v in kwargs.items()]
         return str(tmpl)
 
