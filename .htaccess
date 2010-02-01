@@ -3,9 +3,9 @@ Options -Indexes
 AddHandler mod_python .py
 PythonHandler lib.handler_apache
 PythonDebug On
-PythonPath "sys.path+['/home/philippp/pychee']"
+PythonPath "sys.path+['/var/www/100bedsforhaiti.com/pychee']"
 #SetEnvIfNoCase PYCHEE_END_URI .+ PYCHEE_END_URI=""
-DirectoryIndex /static/index.html
+DirectoryIndex controllers/main.py
 
 RewriteEngine On
 RewriteBase /

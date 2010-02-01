@@ -1,0 +1,14 @@
+#extends base
+
+#def maincol()
+	    <h2>Donate</h2>
+	    <p>The easiest and quickest way to help is by donating at any level below.</p>
+	    <h2>Volunteer or Partner with us</h2>
+	    <p>Show support at 100beds social events or donate your talents.</p>
+	    <form action="/help/signup" method="post">
+	        <input type="text" name="name" value="Your Name"/>
+	    	<input type="text" name="email" value="Your Email"/>
+	    	<textarea name="comment">How would you like to get involved</textarea>
+	    	<input type="submit"/>
+	    </form>
+#end def

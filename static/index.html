@@ -1,27 +1,35 @@
-<h1>Welcome to PyChee</h1>
+<html>
+  <head>
+    <title>100 Beds for Haiti</title>
+    <link rel="stylesheet" type="text/css" href="100beds.css" />
+    <meta http-equiv="keywords" content="Haiti, humanitarian aid, fundraiser, hospitals">
+    <meta http-equiv="description" content="Help us bring 100 beds to Hopital Sacre Coeur in Haiti.">
 
-PyChee is a lightweight Apache/Python framework that was written over the course of a sporadic weekend. Its aim is to be a lightweight python deployment for exporatory development, designed to host a number of projects on disparate subdomains.
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-12751934-1");
+      pageTracker._setDomainName(".100bedsforhaiti.com");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
 
-<h2>Installation</h2>
+  </head>
+  <body>
+    <h1>100 Beds for Haiti</h1>
+    <h2>How this works</h2>
+    <h2>Donate Now</h2> 
 
-<p>PyChee is hosted on github. Get it at <a href="http://github.com/philippp/PyChee">http://github.com/philippp/PyChee</a>!</p>
-
-Prerequisites:
-<ul>
-  <li>Apache 2</li>
-  <li>mod_python</li>
-  <li>Python 2.6+</li>
-  <li>Cheetah</li>
-</ul>
-
-Modify the PythonPath cited in .htaccess to your project root, and you should be good to go.
-
-<h2>History</h2>
-<h3>0.1 (Weekend one, 11/22/09)</h3>
-Currently PyChee forces each controller to reference a single template, with a routing of /foo calling the index() method of controllers/foo.py and rendering views/foo.tmpl.
-A simple "Hello world" is implemented through controllers/hello.py and views/hello.tmpl, stop by <a href="http://pychee.notphil.com/hello">http://pychee.notphil.com/hello</a> and check it out.
-Immediate goals include routing for methods, so that a routing of /foo/bar will call the bar() method of controllers/foo.py and attempt to render views/foo/bar.tmpl
-
-<h3>0.2 (Weekend two, 11/28/09)</h3>
-It's thanksgiving weekend, so I don't expect to get too much work done on this. We are now resolving routes past the controller name to the method (ex: /foo/bar calls the bar() method of controllers/foo.py). This behavior can be modified by overriding the dispatch() function in controllers/__init__.py. 
-Immediate goals include switching mod_python out for mod_wsgi.
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <!--input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="8613473"-->
+      <input type="hidden" name="business" value="paypal@crudem.org"/>
+      <input type="hidden" name="cmd" value="_donations"/>
+      <input type="hidden" name="amount" value="50"/>
+      <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!"> </form>
+    <h2>Upcoming Events</h2>
+  </body>
+</html>

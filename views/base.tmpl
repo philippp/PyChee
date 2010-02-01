@@ -1,0 +1,71 @@
+#def is_selected($item_name)
+   #if $_cname == $item_name 
+     #return 'selected'
+   #end if
+#end def
+
+<html>
+  <head>
+    <title>100 Beds for Haiti</title>
+    <link rel="stylesheet" type="text/css" href="/css/100beds.css" />
+    <meta http-equiv="keywords" content="Haiti, humanitarian aid, fundraiser, hospitals, earthquake in haiti, help">
+    <meta http-equiv="description" content="Help us bring 100 beds to Hopital Sacre Coeur in Haiti.">
+
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+      var pageTracker = _gat._getTracker("UA-12751934-1");
+      pageTracker._setDomainName(".100bedsforhaiti.com");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+
+  </head>
+  <body>
+    <div id="pagewidth" >
+      <div id="header" >
+	<h1>100 Beds for Haiti</h1>
+	The 100 Beds for Haiti Campaign will work to finance the purchase and transportation of 100 hospital beds to Sacre Coeur Hospital in Cap Haitien, the largest private hospital serving the health needs of the XX million people living in the northern province.  
+      </div>
+      <div id="wrapper" class="clearfix" > 
+	<div id="leftcol">
+	  <ul id="sitemenu">
+	    <li class="$is_selected('main')"><a href="/">HOME</a></li>
+	    <li class="$is_selected('events')"><a href="/events">EVENTS</a></li>
+	    <li class="$is_selected('help')"><a href="/help">GET INVOLVED</a></li>
+	    <li class="$is_selected('pictures')"><a href="/pictures">PHOTOS</a></li>
+	    <li class="$is_selected('contact')"><a href="/contact">CONTACT US</a></li>
+	    <li>Partners and Friends
+	      <ul>
+		<li><a href="http://www.crudem.org/">CRUDEM</a></li>
+		<li><a href="http://Students4ayiti.blogspot.com">Students for Ayiti</a></li>
+	      </ul>
+	    </li>
+	</div>
+
+	<div id="twocols" class="clearfix"> 
+	  <div id="maincol">
+	    $maincol()
+	  </div>
+	  <div id="rightcol">
+	    <div>Photos</div>
+	    <div>Updates</div>
+	    <div>Socialmedia</div>
+	</div>
+      </div>
+      <div id="footer" > 
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	  <!--input type="hidden" name="cmd" value="_s-xclick">
+	  <input type="hidden" name="hosted_button_id" value="8613473"-->
+	  <input type="hidden" name="business" value="paypal@crudem.org"/>
+	  <input type="hidden" name="cmd" value="_donations"/>
+	  <input type="hidden" name="amount" value="50"/>
+	  <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to donate online!">
+	</form>
+      </div>
+    </div>
+  </body>
+</html>
