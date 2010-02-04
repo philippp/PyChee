@@ -9,6 +9,8 @@ class contact(controller.Controller):
     
   def signup(self, name, email):
     cursor.insert('signups', name=name, email=email)
-    
+    return self.render("thanks",message="Thanks, we'll be in touch")
+
   def comment(self, name, email, message):
-    messages.create(name, email, message)
+    comments.create(name, email, message)
+    return self.render("thanks",message="Thanks for getting in touch")
