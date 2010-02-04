@@ -1,0 +1,12 @@
+#extends base
+
+#def maincol()
+	    <h2>Talk to us</h2>
+
+	    <form action="/contact/add" method="post">
+	        <input type="text" name="name" value="Your Name"/><br/>
+	    	<input type="text" name="email" value="Your Email"/><br/>
+	    	<textarea name="comment"></textarea><br/>
+	    	<input type="submit" value="Send"/>
+	    </form>
+#end def

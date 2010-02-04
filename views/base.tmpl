@@ -4,6 +4,51 @@
    #end if
 #end def
 
+#def head()
+#end def
+
+#def suppress_right_col()
+     <style type="text/css">
+     \#maincol{ width: 100%; }
+     \#rightcol{ display: none; }
+     </style>
+#end def
+
+#def right_col()
+<div>pictures</div>
+<div>twitter</div>
+<div>become a fan</div>
+$pp_button(0, True)
+#end def
+
+#def menu_item($iname, $idesc)
+  #set $ipath = "/"+$iname
+  #if $iname == "main"
+     #set $ipath = "/"
+  #end if
+  <li class="$is_selected($iname)"><a href="$ipath">$idesc</a></li>
+#end def
+
+#def pp_button($amount=0, $cc_logo=False)
+	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	    #if $amount > 0
+	    <input type="hidden" name="amount" value="$amount"/>
+	    #end if
+	    <input type="hidden" name="business" value="paypal@crudem.org"/>
+	    <input type="hidden" name="cmd" value="_donations"/>
+	    <input type="hidden" name="item_name" value="100 Beds for Haiti"/>
+	    <input type="hidden" name="item_number" value="100 Beds for Haiti"/>
+	    <input type="hidden" name="cpp_header_image" value="http://www.100bedsforhaiti.com/images/100beds_sm.jpg"/>
+	    <input type="hidden" name="image_url" value="http://www.100bedsforhaiti.com/images/100beds_sm.jpg"/>
+	    <input type="hidden" name="page_style" value="primary"/>
+	    #if $cc_logo
+	    <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to donate online!">
+	    #else
+	    <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to donate online!">
+	    #end if
+	  </form>
+#end def
+
 <html>
   <head>
     <title>100 Beds for Haiti</title>
@@ -22,50 +67,40 @@
       pageTracker._trackPageview();
       } catch(err) {}
     </script>
-
+    $head()
   </head>
   <body>
-    <div id="pagewidth" >
-      <div id="header" >
-	<h1>100 Beds for Haiti</h1>
-	The 100 Beds for Haiti Campaign will work to finance the purchase and transportation of 100 hospital beds to Sacre Coeur Hospital in Cap Haitien, the largest private hospital serving the health needs of the XX million people living in the northern province.  
-      </div>
-      <div id="wrapper" class="clearfix" > 
-	<div id="leftcol">
-	  <ul id="sitemenu">
-	    <li class="$is_selected('main')"><a href="/">HOME</a></li>
-	    <li class="$is_selected('events')"><a href="/events">EVENTS</a></li>
-	    <li class="$is_selected('help')"><a href="/help">GET INVOLVED</a></li>
-	    <li class="$is_selected('pictures')"><a href="/pictures">PHOTOS</a></li>
-	    <li class="$is_selected('contact')"><a href="/contact">CONTACT US</a></li>
-	    <li>Partners and Friends
-	      <ul>
-		<li><a href="http://www.crudem.org/">CRUDEM</a></li>
-		<li><a href="http://Students4ayiti.blogspot.com">Students for Ayiti</a></li>
-	      </ul>
-	    </li>
-	</div>
 
-	<div id="twocols" class="clearfix"> 
-	  <div id="maincol">
-	    $maincol()
-	  </div>
-	  <div id="rightcol">
-	    <div>Photos</div>
-	    <div>Updates</div>
-	    <div>Socialmedia</div>
+    <div id="pagebacking">
+      <div id="pagewidth" >
+	<div id="header" >
+	  <img src="/images/100beds.png" alt="100 Beds for Haiti"/>
 	</div>
-      </div>
-      <div id="footer" > 
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	  <!--input type="hidden" name="cmd" value="_s-xclick">
-	  <input type="hidden" name="hosted_button_id" value="8613473"-->
-	  <input type="hidden" name="business" value="paypal@crudem.org"/>
-	  <input type="hidden" name="cmd" value="_donations"/>
-	  <input type="hidden" name="amount" value="50"/>
-	  <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to donate online!">
-	</form>
-      </div>
-    </div>
+	<div id="wrapper" class="clearfix" > 
+	  <div id="leftcol">
+	    <div id="sitemenu">
+	      <ul>
+		$menu_item('main','HOME')
+		$menu_item('about','ABOUT')
+		$menu_item('partners','PARTNERS')
+		$menu_item('events','EVENTS')
+		$menu_item('help','GET INVOLVED')
+		$menu_item('contact','CONTACT US')
+	      </ul>
+	    </div>
+	  </div>
+	  <div id="twocols" class="clearfix"> 
+	    <div id="maincol">
+	      $maincol()
+	    </div>
+	    <div id="rightcol">
+	      $right_col()
+	    </div>
+	  </div>
+	</div>
+	<div id="footer" > 
+	</div>
+      </div><!-- #pagewidth -->
+    </div><!-- #pagebacking -->
   </body>
 </html>
