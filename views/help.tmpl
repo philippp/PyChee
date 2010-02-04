@@ -27,24 +27,25 @@
 	      </tbody>
 	    </table>
 	    </center>
-	    <h2>Events</h2>
-	    Join us at <a href="/events">our fine events</a> across the city!
 
 	    <h2>Talk to us</h2>
-	    <p>Got ideas? We want to hear them. <a href="/contact">Please contact us!</a></p>
-
-	    <h2>Volunteer or Partner with us</h2>
-	    <p>We need help! Event planning, logistics, and coordinating skills are welcome. Please let us know if you are interested in supporting this campaign by partnering with us. <a href="/contact">Click here to work with us.</a></p>
-	    <form action="/help/signup" method="post">
-	        <input type="text" name="name" value="Your Name"/>
-	    	<input type="text" name="email" value="Your Email"/>
-	    	<textarea name="comment">How would you like to get involved</textarea>
-	    	<input type="submit"/>
+	    <p>Got ideas? We want to hear them. Want to volunteer, help out, or partner up? Let's talk!</p>
+	    <form action="/contact/comment" method="post">
+	      <span class="formlabel">Your Name:</span>
+	      <input type="text" name="name" value="Your Name"/><br/>
+	      
+	      <span class="formlabel">Your Email:</span>
+	      <input type="text" name="email" value="Your Email"/><br/>
+	      
+	      <span class="formlabel">Your Message:</span><br/>
+	      <textarea name="message"></textarea><br/>
+	      <input type="submit" value="Send"/>
 	    </form>
+
 
 	    <h2>Stay Connected</h2>
 	    Stay connected to our campaign as we progress. Sign up to join our list-serv:
-	    <form action="/help/signup" method="post">
+	    <form action="/contact/signup" method="post">
 	        <input type="text" name="name" value="Your Name"/>
 	    	<input type="text" name="email" value="Your Email"/>
 	    	<input type="submit"/>

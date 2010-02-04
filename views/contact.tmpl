@@ -1,12 +1,17 @@
 #extends base
 
 #def maincol()
-	    <h2>Talk to us</h2>
+<h2>Talk to us</h2>
 
-	    <form action="/contact/add" method="post">
-	        <input type="text" name="name" value="Your Name"/><br/>
-	    	<input type="text" name="email" value="Your Email"/><br/>
-	    	<textarea name="comment"></textarea><br/>
-	    	<input type="submit" value="Send"/>
-	    </form>
+<form action="/contact/comment" method="post">
+  <span class="formlabel">Your Name:</span>
+  <input type="text" name="name" value="Your Name"/><br/>
+
+  <span class="formlabel">Your Email:</span>
+  <input type="text" name="email" value="Your Email"/><br/>
+
+  <span class="formlabel">Your Message:</span><br/>
+  <textarea name="message"></textarea><br/>
+  <input type="submit" value="Send"/>
+</form>
 #end def

@@ -1,0 +1,20 @@
+<h1>Admin zone</1>
+
+<h2>Emails</h2>
+#for $signup in $signups
+<div>
+Name: $signup['name']<br/>
+Email: $signup['email']
+</div>
+#end for
+
+<h2>Messages</h2>
+
+#for $comment in $comments
+<div>
+
+Name: $comment['name']<br/>
+Email: $comment['email']<br/>
+Message: $comment['comment']<br/>
+</div>
+#end for

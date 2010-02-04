@@ -24,5 +24,11 @@ def insert(table, **kwargs):
          ",".join(kwargs.keys()),
          ",".join( [ "'%s'" % v for v in kwargs.values() ] )
          )
-    self.execute(query_str)
+    execute(query_str)
     
+def load(table, col_list):
+    query_str = "SELECT %s FROM %s" % \
+        (",".join(col_list),
+         table)
+    
+    return execute(query_str)

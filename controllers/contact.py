@@ -1,5 +1,6 @@
 from lib import controller
 from lib import cursor
+from app import comments
 
 class contact(controller.Controller):
 
@@ -10,4 +11,4 @@ class contact(controller.Controller):
     cursor.insert('signups', name=name, email=email)
     
   def comment(self, name, email, message):
-    cursor.insert('comments', name=name, email=email, comment=message)
+    messages.create(name, email, message)

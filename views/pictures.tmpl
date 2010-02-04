@@ -1,0 +1,28 @@
+#extends base
+#def head()
+<script type="text/javascript" src="js/lightbox/js/jquery.lightbox-0.5.js"></script>
+<link rel="stylesheet" type="text/css" href="js/lightbox/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript">
+\$(function(){ 
+  \$("table.photos a").lightBox();
+});
+</script>  
+#end def
+
+#def maincol()
+<h2>Photos of CRUDEM in action</h2>
+<table class="photos"><thead></thead>
+  <tbody>
+    <tr>
+      #for $pic in $crudem_pictures[:5]
+      <td><a href="$pic['big']"><img src="$pic['small']" /></a></td>
+      #end for
+    </tr>
+    <tr>
+      #for $pic in $crudem_pictures[5:]
+      <td><a href="$pic['big']"><img src="$pic['small']" /></a></td>
+      #end for
+    </tr>
+  </tbody>
+</table>
+#end def
