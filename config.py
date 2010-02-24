@@ -1,3 +1,4 @@
+#comment
 root_dir = '/var/www/100bedsforhaiti.com/pychee'
 data_dir = '%s/data' % root_dir
 diskio_dir = data_dir + '/diskio'
