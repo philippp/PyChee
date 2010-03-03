@@ -1,0 +1,61 @@
+#extends base
+
+#def maincol()
+<div id="page-wrap">
+  <div id="right">
+    <br />
+    <h3>Talk with Us</h3>
+    <p>Got ideas? We want to hear them. 
+      <br />
+      Want to volunteer, help out, or partner up?
+      <br />
+      Let's talk! We want your ideas, passions, 
+      <br />
+      and commitments to help raise the money 
+      <br />
+      needed for this very real cause.
+    </p>
+    <br />
+    <div id="contact-area">
+      
+      <form method="post" action="/getinvolved/comment">
+	
+	<label for="name">Name:</label>
+	<input type="text" name="name" id="Name" />
+	<br />
+	<label for="email">Email:</label>
+	<input type="text" name="email" id="Email" />
+	<br />
+	<label for="message">Message:</label><br />
+	<textarea name="message" rows="10" cols="60" id="Message"></textarea>
+	<br />
+	<button type="submit" name="submit" class="submit-button"><img src="/images/check.png" alt="" /> Submit</button>
+      </form>
+      
+      <div style="clear: both;"></div>	
+      
+    </div>
+  </div>
+  <h1>get involved</h1>
+  <h3>Stay Connected</h3>
+  <p>
+    Stay connected to our campaign as we progress. 
+    <br />
+    Sign up to join our list-serv:
+  </p>
+  <br />
+  <form method="post" action="/getinvolved/signup">
+    <label for="Name">Name:</label>
+    <input type="text" name="name" id="name" />
+    
+    <label for="Email">Email:</label>
+    <input type="text" name="email" id="email" />
+    <br />
+    <button type="submit" name="submit" class="submit-button"><img src="images/check.png" alt="" /> Submit</button>
+  </form>
+  
+  <div style="clear: both;"></div>	
+</div>
+
+</div>
+#end def

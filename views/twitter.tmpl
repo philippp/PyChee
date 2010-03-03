@@ -1,13 +1,15 @@
 #extends base
 #set $page_name = 'main'
 
-#def maincol()
-    <div id="map">      
-    </div>
+#def head()
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
 #end def
 
-#def right_col()
-<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+
+#def maincol()
+     <h2>Our Mission:</h2>
+	<p>The 100 Beds for Haiti Campaign will work to finance the purchase and transportation of 100 hospital beds to Sacre Coeur Hospital in Cap Haitien, the largest private hospital serving the health needs of the XX million people living in the northern province.</p>
+
 <script>
 new TWTR.Widget({
   version: 2,
@@ -38,4 +40,7 @@ new TWTR.Widget({
   }
 }).render().setUser('100beds4Haiti').start();
 </script>
+
 #end def
+
+
