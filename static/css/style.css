@@ -2,45 +2,248 @@
 	 100 Beds for Haiti
 */
 
-* { margin: 0; padding: 0; }
-body { font: 15	px serif; background: #2F2626; color: #eee; }
-img {border: none;}
-#head {	
-	font-family: serif;
-	font-size: 3.5em;
-	margin: auto;
-	padding-top: 0px;
-	padding-left: 15px;
-	position: relative;
-	background: #FFF;
-	width: auto;
-	height: 110px;	
+/* global attributes ------------------------------------------------------- */
+* { 
+	margin: 0; 
+	padding: 0; 
 }
-#head img {padding-top: 10px;}
-a {text-decoration: none;}
 
-dl dt	{ 
-	padding:5px; 
-	margin: 0px; 
+*:first-child+html .group { zoom: 1; } /* IE7 */
+
+body, html {
+	font: serif;
+	background: #2F2626;
+}
+
+img { border: none; }
+
+a { text-decoration: none; }
+
+dl dt { 
+	padding:10px; 
+	margin: 0 0 10px 0; 
 	border: none;
-	float:left; 
+	float:left;
 	width: 150px;
 	height: 150px;
-	}
+}
+
+dl dd {
+	font-size: .9em; 
+	color: #CCC;
+}
+
+/* main layout ------------------------------------------------------------- */
+
+#wrap {
+	width: 1075px;
+	margin:0 auto;
+}
+
+#main {
+	margin:20px 0 0 0;
+	float:right;
+	width:750px;
+}
+
+#sidecol {
+	float:left;
+	width:300px;
+}
+
+#head {
+	background: #fff;
+}
+
+#head img { 
+	padding:10px; 
+	display:block;
+}
+
+#right-text {
+	float: right; 
+	position: relative; 
+	width: 330px; 
+} 
+
+#left-text {
+	width: 330px;
+}
+
+.left-col, .right-col {
+	width: 300px;
+}
+
+/* content specific -------------------------------------------------------- */
+
+.advisory-board ul {
+	line-height:1.1em;
+}
+
+.advisory-board li {
+	margin:0 20px 10px 0px;
+}
+
+.center {
+	text-align:center;
+}
+
+#lead {
+	color: #FFF;
+	background-color: #9C9694;
+	font-size: .9em;
+	border-top:2px solid #918f80;
+	padding:10px;
+}
 	
-dl dd {font-size: .9em; color: #CCC;}
+#lead p {
+	margin:4px 0 0 0;
+	padding:0 0 0 15px;
+}
+
+#magic-line { 
+	position: absolute; 
+	bottom: -2px; 
+	left: 0; 
+	width: 100px; 
+	height: 2px; 
+	background: #788E45; 
+}
+
+#map {
+	background: #FFF url(/images/newmap.jpg) no-repeat;
+	height: 499px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#navigation { 
+	background-color: rgba(178,28,34,58); 
+	border-top: 1px solid #dc383f;
+	border-bottom: 1px solid #6a5656; 
+	height: 57px;
+}
+
+.nav-list ul {
+}
+
+.nav-list li { display: inline; }
+
+.nav-list li a { 
+	color: #bbb; 
+	font-size: 1.2em; 
+	display: block; 
+	float: left; 
+	padding: 19px 0px 4px 20px; 
+	text-decoration: none; 
+	text-transform: uppercase; 
+}
+
+.nav-list li a.nav-donate {
+	color:#f4ed73;
+}
+
+.nav-list li a:hover { 
+	color: white; 
+}
+
+#page-wrap {
+	background: #FFF;
+	color: #474747;
+	font-family: serif;
+	font-size: 1em;
+	padding: 30px 30px 30px 30px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	
+#page-wrap img {
+	display: block;
+}
+
+#page-wrap a {
+	text-decoration: none;
+	color: #909398;
+}
+
+#page-wrap a:hover {
+	text-decoration: underline;
+}
+	
+#page-wrap p {
+	font-size: 0.9em; 
+	letter-spacing: .04em;
+	line-height:1.15em;
+	margin:0 0 1em 0;
+}
+	
+#page-wrap h1 {
+	color: rgba(178,28,34,58);
+	line-height: 1.4em;
+	letter-spacing: .04em;
+}
+	
+#page-wrap h2 {
+	color: #FFF; 
+	line-height: 0.7em; 
+	font-family: serif; 
+	line-height: 1em; 
+	text-align: center; 
+	text-decoration: underline;
+}
+
+#page-wrap h3 {
+	color: #60574E;
+	line-height: 1.4em;
+	font-size: 1.3em;
+	letter-spacing: .04em;
+	margin:0 0 0.5em 0;
+}
+	
+#page-wrap li {font-size: 0.8em;}
+
+#page-wrap .footer, #page-wrap .header {
+	float:both;
+}
+
+#paypal { 
+	float: right; 
+	position: relative; 
+	top: 10px; 
+	right: 100px; 
+	background: #9D9B8B;
+}
+	
+#who {
+	background: rgba(178,28,34,58);
+	margin: 10px;
+	paddinging: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#who dd {
+	margin:0 0 20px 0;
+}
+
+#who dl {
+	margin:15px;
+}
+
+#who dt img {
+
+}
+
+#who h2 {
+	padding:10px 0 0 0;
+}
+
+
+
 td.donate-price {width: 200;
 	border: none;
-	}
-#who {background: rgba(178,28,34,58);
-	height: auto;
-	width: 400px;
-	margin: 10px;
-	padding: 10px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
-	 }
-#paypal { float: right; position: relative; top: 10px; right: 100px; background: #9D9B8B;}
+}
+
 .red {color: #B21C22}
 .gray {color: #9D9B8B}
 .right {float: right; 
@@ -48,24 +251,7 @@ td.donate-price {width: 200;
 		padding-right: 127px;
 		}
 #right {float: right; position: relative; width: 50%;}
-#right-text {float: right; position: relative; width: 50%; padding-top: 40px;} 
 
-#left {float: left; position: relative; width: 50%;}
-#lead {
-	
-	 color: #FFF;
-	 font-family: serif;	
-	 margin:  auto;  
-	 background-color: #9D9B8B; 
-	 border-top: 4px solid white;
-	 border-bottom: 0px solid white; 
-	 width: auto;
-	 height: auto;
-	 font-style: serif;
-	 font-size: 0.9em;
-	 
-	 padding: 7px 15px 0px 15px;
-}
 .progress {
 	background: url(prog.jpg) no-repeat;
 	position: relative;
@@ -81,102 +267,54 @@ td.donate-price {width: 200;
 	color: white;	
 	
 }
-.nav-wrap { margin: 0px auto; 
-			background-color: rgba(178,28,34,58); 
-			border-top: 3px solid white; 
-			border-bottom: 3px solid white; 
-			height: 57px;
-			width: auto;
-			}
 
-.group:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
-*:first-child+html .group { zoom: 1; } /* IE7 */
-
-#example-one {
-	margin: 0;
-	list-style: none;
-	position: relative;
-	width: 960px;
+.group:after { 
+	visibility: hidden; 
+	display: block; 
+	font-size: 0; 
+	content: " "; 
+	clear: both; 
+	height: 0; 
 }
-#example-one ul {position: absolute; left: 0px;}
-#example-one li { display: inline;}
-#example-one li a { color: #bbb; font-size: 1.2em; display: block; float: left; padding: 19px 0px 4px 20px;; text-decoration: none; text-transform: uppercase; }
-#example-one li a:hover { color: white; }
-#magic-line { position: absolute; bottom: -2px; left: 0; width: 100px; height: 2px; background: #788E45; }
+
+
 
 .current_page_item a, .current_page_item_two a { color: white !important; }
 
-#page-wrap {
-	background: #FFF;
-	width: 66%;
-	float: right;
-	height: auto;
-	color: #474747;
-	font-family: serif;
-	font-size: 1em;
-	padding: 30px 0 30px 30px;
-	position: relative;
-	top: 20px;
-	right: 20px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
-	}
-#page-wrap img{border: none; display: block;}
-.top{padding-top: 60px;}	
-#page-wrap a{
-	text-decoration: none;
-	color: #909398;
-	}
-#page-wrap a:hover {
-		text-decoration: underline;
-		}
-#page-wrap p{
-	font-size: 0.9em; 
-	width: auto;
-	letter-spacing: .04em;
-	}
-#page-wrap h1 {
-	color: rgba(178,28,34,58);
-	line-height: 1.4em;
-	letter-spacing: .04em;
-	}
-#page-wrap h2 {color: #FFF; line-height: 0.7em; font-family: serif; line-height: 1em; text-align: center; text-decoration: underline;}
-#page-wrap h3 {
-	color: #60574E;
-	line-height: 1.4em;
-	font-size: 1.3em;
-	letter-spacing: .04em;
-	}
-#page-wrap li {font-size: 0.8em;}
+
+
+
 table td {
 	border: 1px solid black;
 	height: 69px;
 	width: 48px;
-	}
+}
+
+	
 #sidebar {
 	background: #C2C1B9;
 	float: left;
-	width: 24%;
+	width: 290px;
 	height: auto;
 	padding: 10px;
-	padding-top: 10px;
-	position: relative;
-	left: 20px;
-	top: 20px;
+	margin:20px 0 0 0;
 	font-family: serif;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;	
 	font-size: 0.9em;
 	line-height: 1.5em;
 }
-#social a{padding: 17px; border: none;}
-#social img{border: none;}
+#social a {
+	padding: 17px; 
+	border: none;
+}
+
+.top { padding-top: 60px; }	
 
 #twitter { 
-	 
 	padding: 20px; 
 	min-width: 250px; 
-	}
+}
 
 #latest-flickr-images ul {
 	width: 250px;
@@ -184,16 +322,7 @@ table td {
 	padding: 10px;
 	
 	}
-#map {
-	background: #FFF url(/images/newmap.jpg) no-repeat;
-	width: 66%;
-	height: 499px;
-	float: right;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
-		position: relative;
-		top: 20px;
-		right: 20px;
+
 #cont {
 	background: #FFF;
 	width: 71%;
@@ -222,6 +351,23 @@ table td {
 	 Contact Form
 */
 
+#contact-area ul {
+	list-style:none;
+}
+
+#contact-area input, #contact-area textarea {
+	padding:5px;
+	margin:5px 0 5px 0;
+	width:300px;
+	border:1px solid #ccc;
+}
+
+#contact-area h3 {
+	font-weight:normal;
+	margin:0px;
+}
+
+/*
 #contact-area {
 	width: 300px;
 	margin-top: 25px;
@@ -275,6 +421,7 @@ label {
 	font-size: 1.4em;
 	font-family: serif;
 }
+*/
 
 /* BUTTONS */
 
@@ -315,3 +462,4 @@ label {
     width:16px;
     height:16px;
 }
+/* sort */

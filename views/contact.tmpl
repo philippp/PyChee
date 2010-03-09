@@ -1,17 +1,33 @@
 #extends base
 
 #def maincol()
-<h2>Talk to us</h2>
 
-<form action="/contact/comment" method="post">
-  <span class="formlabel">Your Name:</span>
-  <input type="text" name="name" value="Your Name"/><br/>
+<div id="page-wrap">
+	<h1>Talk to us</h1>
+	<div id="left-text">
+		<p>
+			Got ideas? Questions? We want to hear them. 
+		</p>
+		
+		<div id="contact-area" class="right-col">
 
-  <span class="formlabel">Your Email:</span>
-  <input type="text" name="email" value="Your Email"/><br/>
+			<form method="post" action="/contact/comment">
+				<ul>
+					<li><h3><label for="name">Name:</label><h3></li>
+					<li><input type="text" name="name" id="Name" /></li>
+					<li><h3><label for="email">Email:</label></h3></li>
+					<li><input type="text" name="email" id="Email" /></li>
+					<li><h3><label for="message">Message:</label></h3></li>
+					<li><textarea name="message" rows="10" id="Message"></textarea></li>
+					<li><button type="submit" name="submit" class="submit-button"><img src="/images/check.png" alt="" /> Submit</button></li>
+				</ul>
+			</form>
 
-  <span class="formlabel">Your Message:</span><br/>
-  <textarea name="message"></textarea><br/>
-  <input type="submit" value="Send"/>
-</form>
+			<div style="clear: both;"></div>	
+
+		</div>
+	</div>
+</div>
+
 #end def
+
