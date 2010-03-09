@@ -171,10 +171,10 @@
 	    <input type="hidden" name="cpp_header_image" value="http://www.100bedsforhaiti.com/images/100beds_sm.jpg"/>
 	    <input type="hidden" name="image_url" value="http://www.100bedsforhaiti.com/images/100beds_sm.jpg"/>
 	    <input type="hidden" name="page_style" value="primary"/>
-	    #if $cc_logo
-	    <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal - The safer, easier way to donate online!">
+	    #if $amount > 0
+	    <input type="image" border="0" src="/images/${amount}.jpg" name="submit" alt="PayPal - The safer, easier way to donate online!">
 	    #else
-	    <input type="image" border="0" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to donate online!">
+	    <input type="image" border="0" src="/images/other.jpg" name="submit" alt="PayPal - The safer, easier way to donate online!">
 	    #end if
 	  </form>
 #end def
