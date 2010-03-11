@@ -1,4 +1,4 @@
-/*
+﻿/*
 	 100 Beds for Haiti
 */
 
@@ -11,7 +11,7 @@
 *:first-child+html .group { zoom: 1; } /* IE7 */
 
 body, html {
-	font: serif;
+	font: Baskerville, Times New Roman, serif;
 	background: #2F2626;
 }
 
@@ -38,6 +38,12 @@ dl dd {
 #wrap {
 	width: 1075px;
 	margin:0 auto;
+}
+
+#wrap p {
+	width: 660px;
+	padding: 0px;
+	line-height:1.3em;
 }
 
 #main {
@@ -70,6 +76,11 @@ dl dd {
 	width: 330px;
 }
 
+#left-text p, #right-text p {
+	width: 320px;
+	margin-right: 10px;
+}
+
 .left-col, .right-col {
 	width: 300px;
 }
@@ -97,8 +108,7 @@ dl dd {
 }
 	
 #lead p {
-	margin:4px 0 0 0;
-	padding:0 0 0 15px;
+	margin:4px 0 0 12px;
 }
 
 #magic-line { 
@@ -118,29 +128,33 @@ dl dd {
 }
 
 #navigation { 
-	background-color: rgba(178,28,34,58); 
-	border-top: 1px solid #dc383f;
+	background-color: #c1272d; /* rgba(178,28,34,58); */
+/*	border-top: 1px solid #dc383f; */
 	border-bottom: 1px solid #6a5656; 
-	height: 57px;
 }
 
-.nav-list ul {
+ul.nav-list  {
+	margin-left:11px;
 }
 
 .nav-list li { display: inline; }
 
 .nav-list li a { 
 	color: #bbb; 
-	font-size: 1.2em; 
+	font-family: Helvetica, Tahoma, Arial, sans-serif;
+	font-stretch: condensed;	
+	font-weight: 500;
+	font-size: 1.2em;
+	letter-spacing:-0.03em; 
 	display: block; 
 	float: left; 
-	padding: 19px 0px 4px 20px; 
+	padding: 5px 20px 5px 0px; 
 	text-decoration: none; 
 	text-transform: uppercase; 
 }
 
 .nav-list li a.nav-donate {
-	color:#f4ed73;
+	color:#00ccff; /*#f4ed73;*/
 }
 
 .nav-list li a:hover { 
@@ -163,7 +177,7 @@ dl dd {
 
 #page-wrap a {
 	text-decoration: none;
-	color: #909398;
+	color: #c1272d;
 }
 
 #page-wrap a:hover {
@@ -178,9 +192,12 @@ dl dd {
 }
 	
 #page-wrap h1 {
-	color: rgba(178,28,34,58);
+	color: #c1272d; /* rgba(178,28,34,58); */
 	line-height: 1.4em;
-	letter-spacing: .04em;
+	letter-spacing: -0.03em;
+	font-family: Helvetica, Tahoma, Arial, sans-serif;
+	font-weight: 500;
+	text-transform:uppercase;	
 }
 	
 #page-wrap h2 {
@@ -215,9 +232,9 @@ dl dd {
 }
 	
 #who {
-	background: rgba(178,28,34,58);
+	background: #c1272d; /*rgba(178,28,34,58);*/
 	margin: 10px;
-	paddinging: 10px;
+	padding: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 }
@@ -236,6 +253,13 @@ dl dd {
 
 #who h2 {
 	padding:10px 0 0 0;
+	text-decoration:none;
+	text-transform:uppercase;
+	color: #FFF;
+	font-size:1.3em; 
+	font-weight:500;
+	letter-spacing:-0.03em;
+	font-family:Helvetica, Tahoma, Arial, sans-serif;
 }
 
 
@@ -251,6 +275,10 @@ td.donate-price {width: 200;
 		padding-right: 127px;
 		}
 #right {float: right; position: relative; width: 50%;}
+
+#right img {
+	margin-left:10px;
+}
 
 .progress {
 	background: url(prog.jpg) no-repeat;
@@ -304,6 +332,15 @@ table td {
 	font-size: 0.9em;
 	line-height: 1.5em;
 }
+
+#sidebar a {
+	color: #c1272d;
+}
+
+#sidebar a:hover {
+	text-decoration:underline;
+}
+
 #social a {
 	padding: 17px; 
 	border: none;
