@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import feather
 import optparse
 import cgi
@@ -8,6 +9,7 @@ import logging.handlers
 import feather
 import config
 import lib.fails
+import traceback
 
 DEFAULT_HOST = ''
 DEFAULT_PORT = 9000
@@ -29,6 +31,7 @@ def handler(environ, start_response):
     app_name = host_parts and host_parts[-1] or None
     cname = url_parts and url_parts[0] or ''
     method = len(url_parts) > 1 and url_parts[1] or ''
+
     try:
         mime, response = eval_controller(environ, start_response, cname, 
                                          method, params, app_name=app_name)
@@ -38,11 +41,11 @@ def handler(environ, start_response):
             mime, response = eval_static(url_parts, app_name=app_name)
             if not response:
                 return feather_404(start_response, msg='file not found')
-
         start_response('200 OK', [('content-type', mime),
                                   ('content_length', str(len(response)))])
         return [response]
     except Exception, e:
+        print traceback.format_exc()
         start_response('200 OK', [('content-type', mime),
                                   ('content_length', str(len(str(e))))])    
         return [str(e)]
@@ -118,8 +121,8 @@ if __name__ == "__main__":
     if options.verbose:
         flogger.setLevel(logging.DEBUG)
 
-#    handler = logging.handlers.RotatingFileHandler(
-#        FEATHER_LOG_FILENAME, maxBytes=1024 * 1024, backupCount=5)
-#    flogger.addHandler(handler)
+    #handler = logging.handlers.RotatingFileHandler(
+    #    FEATHER_LOG_FILENAME, maxBytes=1024 * 1024, backupCount=5)
+    #flogger.addHandler(handler)
 
     feather.wsgi.serve((options.host, options.port), handler)
