@@ -14,22 +14,27 @@ DEFAULT_PORT = 9000
 FEATHER_LOG_FILENAME = config.log_for('feather')
 
 def handler(environ, start_response):
-
-    params = dict(cgi.parse_qsl(environ['wsgi.input'].read()))
+    params = {}
+    if environ['REQUEST_METHOD'] == 'POST':
+        params = eval_form_data(environ)
     
     if 'QUERY_STRING' in environ:
         get_params = dict([ p.split("=") for p in environ['QUERY_STRING'].split('&') ])
         params.update( get_params )
 
-    url_parts = environ['PATH_INFO'].split('/')[1:]
+    url_parts = filter(lambda p : bool(p),
+                       environ['PATH_INFO'].split('/')[1:])
     host_parts = environ['HTTP_Host'].split(':')[0].split('.')
     host_parts = host_parts[:-2] # TLD is known
     app_name = host_parts and host_parts[-1] or None
-
     cname = url_parts and url_parts[0] or ''
+    method = len(url_parts) > 1 and url_parts[1] or ''
     try:
-        mime, response = eval_controller(environ, start_response, cname, params, app_name=app_name)
+        mime, response = eval_controller(environ, start_response, cname, 
+                                         method, params, app_name=app_name)
         if not response:
+            if not url_parts: 
+                url_parts = ['index.html']
             mime, response = eval_static(url_parts, app_name=app_name)
             if not response:
                 return feather_404(start_response, msg='file not found')
@@ -42,7 +47,12 @@ def handler(environ, start_response):
                                   ('content_length', str(len(str(e))))])    
         return [str(e)]
 
-def eval_controller(environ, start_response, cname, params, app_name=''):
+def eval_form_data(environ):
+    raw_body = environ['wsgi.input'].read()
+    params = dict(cgi.parse_qsl(environ['wsgi.input'].read()))
+    return {}
+
+def eval_controller(environ, start_response, cname, method, params, app_name=''):
 
     cname = cname or '_root'
     if app_name:
@@ -61,7 +71,7 @@ def eval_controller(environ, start_response, cname, params, app_name=''):
     except ImportError, e:
         return None, None
         
-    response = target_cls.dispatch(environ, environ['PATH_INFO'], **params)
+    response = target_cls.dispatch(environ, method, **params)
     return 'text/html', response
 
 def eval_static(url_parts, app_name=None):
@@ -71,16 +81,17 @@ def eval_static(url_parts, app_name=None):
 
     fext = url_parts[-1].split(".")[-1]
 
-    fpath_s =  '%s/static/' + "/".join(url_parts)
+    fpath_s =  '/static/' + "/".join(url_parts)
 
     if app_name:
         try:
-            fc = file(fpath_s % config.app_dir_for(app_name)).read()
+            app_dir = config.app_dir_for(app_name)
+            fc = file(app_dir+fpath_s).read()
             return FILE_MIMETYPE[fext], fc
         except IOError, e:
             pass
     try:
-        fc = file(fpath_s % config.root_dir).read()
+        fc = file(config.root_dir+fpath_s).read()
         return FILE_MIMETYPE[fext], fc
     except IOError, e:
         return None, None

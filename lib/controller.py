@@ -45,7 +45,7 @@ class Controller(object):
         return json.dumps({'c':code, 'data':response})
 
     @classmethod
-    def dispatch(cls, req, uri, **kwargs):
+    def dispatch(cls, req, method, **kwargs):
         """
         Routing dispatcher, triggers any and all controller activity.
         Override this method to change the path-to-method resolution or 
@@ -54,8 +54,9 @@ class Controller(object):
         """
 
         controller_obj = cls()
-        uri_parts = uri.split("/")
-        if uri_parts and len(uri_parts) > 1 and getattr(controller_obj, uri_parts[1],None):
-            return getattr(controller_obj, uri_parts[1])(**kwargs) 
+        if method and not getattr(controller_obj, method, None):
+            method = req['PATH_INFO']
+        if method and getattr(controller_obj, method ,None):
+            return getattr(controller_obj, method)(**kwargs) 
         else:
             return controller_obj.index(**kwargs)
