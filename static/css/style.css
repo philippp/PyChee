@@ -34,7 +34,7 @@ dl dd {
 /* main layout ------------------------------------------------------------- */
 
 #wrap, #footer-wrap {
-	width: 1080px;
+	width: 1110px;
 	margin:0 auto;
 	font-family: Helvetica, Tahoma, Arial, sans-serif;
 }
@@ -442,7 +442,7 @@ table td {
 #sidebar {
 	background: #C2C1B9;
 	float: right;
-	width: 290px;
+	width: 330px;
 	height: auto;
 	padding: 10px;
 	margin:20px 0 20px 0;
