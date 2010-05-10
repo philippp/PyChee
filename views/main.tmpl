@@ -2,8 +2,60 @@
 #set $page_name = 'main'
 
 #def maincol()
-    <div id="map">      
-    </div>
+  
+<div id="page-wrap">
+<div id="right">
+<!--Start Twitter widget-->
+<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  rpp: 3,
+  interval: 6000,
+  width: 330,
+  height: 300,
+  theme: {
+    shell: {
+      background: '#c1272d',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#2F2626',
+      color: '#ffffff',
+      links: '#4ebaff'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: false,
+    behavior: 'all'
+  }
+}).render().setUser('100bedsforhaiti').start();
+</script>
+<!--End Twitter widget-->
+
+<br />
+
+<!--Start Facebook widget-->
+<script type="text/javascript" src="http://static.ak.connect.facebook.com/connect.php/en_US"></script><script type="text/javascript">FB.init("f6b670ebb25e8cb7ab11fe05aabf8179");</script><fb:fan profile_id="296584143649" stream="1" connections="10" logobar="1" width="330"></fb:fan><div style="font-size:8px; padding-left:10px"><a href="http://www.facebook.com/pages/100-Beds-for-Haiti/296584143649">100 Beds for Haiti</a> on Facebook</div>
+<!--End Facebook widget-->
+</div>
+
+<div id="left" style="height:820px">
+<p>In Haiti's <a href="http://www.crudem.org" target="_blank">Sacr&eacute; Coeur Hospital</a>, hundreds of sick patients will spend tonight sleeping on cots, floors and benches. Something as simple as a hospital bed can improve the outcome for the sick dramatically. The 100 Beds for Haiti Campaign needs your help to procure and deliver 100 hospital beds. Your small contribution today will have a lasting impact on Haiti's healthier tomorrow. <a href="/donate">Donate now to bring beds to Haiti.</a></p>
+<div id="map">
+<img src="images/map330long.png" alt="Haiti map" />
+</div>
+</div>
+</div>
+ <!--
+<div id="map"><img src="images/map2.png" alt="Haiti map" /></div>
+-->
 #end def
 
 #def right_col()

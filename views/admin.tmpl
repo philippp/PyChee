@@ -2,11 +2,21 @@
 
 <h2>Emails</h2>
 #for $signup in $signups
-<div>
+<div style="font-size: 12px;">
 Name: $signup['name']<br/>
 Email: $signup['email']
 </div>
 #end for
+
+For easy copying and pasting:
+<br/>
+<textarea style='height:300px; width:500px;'>
+#for $signup in $signups
+  #if $signup['email']
+    $signup['email']; #slurp
+  #end if
+#end for
+</textarea>
 
 <h2>Messages</h2>
 

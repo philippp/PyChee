@@ -11,6 +11,6 @@ class contact(controller.Controller):
     cursor.insert('signups', name=name, email=email)
     return self.render("thanks",message="Thanks, we'll be in touch")
 
-  def comment(self, name, email, message):
+  def comment(self, name, email, message, *args, **kwargs):
     comments.create(name, email, message)
     return self.render("thanks",message="Thanks for getting in touch")

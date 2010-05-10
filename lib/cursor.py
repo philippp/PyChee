@@ -5,8 +5,8 @@ except DeprecationWarning:
 
 def get_cursor():
     conn = MySQLdb.connect( host = "localhost",
-                            user = "root",
-                            passwd = "nineteen81",
+                            user = "httpd",
+                            passwd = "httpd_db",
                             db = "pychee" )
 
     return conn.cursor()
