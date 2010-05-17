@@ -26,4 +26,6 @@ class main(controller.Controller):
     news_items = sorted(news_items,
                         key = lambda s : rfc822.mktime_tz(rfc822.parsedate_tz(s['pubDate'])),
                         reverse=True)
+    for s in news_items:
+      s['pubDate'] = " ".join(s.get('pubDate','').split(" ")[:4])
     return news_items

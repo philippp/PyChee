@@ -5,7 +5,10 @@
   
 <div id="page-wrap">
   <div id="right">
-    <h3>$stories[0]['title']</h3>
+    <h1>100 Beds for Haiti's Blog</h1>
+    <h3 style="margin-bottom: 0px">$stories[0]['title']</h3>
+    <i>$stories[0]['pubDate']</i>
+    <br/><br/>
     $stories[0]['description']
     <div style="clear:both;">&nbsp;</div>
   </div>
@@ -16,7 +19,15 @@
     </div>				      
   </div>
   <div style="clear:both;">&nbsp;</div>
+  #for $story in $stories[1:]
+    <h3 style="margin-bottom: 0px">$story['title']</h3>
+    <i>$stories[0]['pubDate']</i>
+    <br/><br/>
+    $story['description']
+    <br/><br/>
+  #end for
 </div>
+
  <!--
 <div id="map"><img src="images/map2.png" alt="Haiti map" /></div>
 -->
