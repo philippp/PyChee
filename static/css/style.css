@@ -97,6 +97,21 @@ dl dd {
 
 /* content specific -------------------------------------------------------- */
 
+#banner {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+-moz-border-radius-bottomleft:10px;
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-topleft:10px;
+-moz-border-radius-topright:10px;
+background:#FFFFFF none repeat scroll 0 0;
+padding: 10px;
+margin-left: 168px;
+width: 754px;
+margin-top: 20px;
+}
+
 .advisory-board ul {
 	list-style-type:none;
 	margin-left:0px;
